@@ -85,7 +85,7 @@ class App extends Component {
         node.label = node.name;
         node.shape = 'dot';
         
-        // Modifying size of nodes using an random value
+        // Modifying size of nodes using a random value
         node.value = Math.floor(Math.random()*(50-10+1)+10);
         node.scaling= {
           customScalingFunction: function (min,max,total,value) {
