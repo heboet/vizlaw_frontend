@@ -84,6 +84,17 @@ class App extends Component {
         node.id = node.nodeId;
         node.label = node.name;
         node.shape = 'dot';
+        
+        // Modifying size of nodes using an random value
+        node.value = Math.floor(Math.random()*(50-10+1)+10);
+        node.scaling= {
+          customScalingFunction: function (min,max,total,value) {
+            return value/total;
+          },
+          min:5,
+          max:150
+        };
+        
         // node.widthConstraint = { minimum: node.numberCitations * 1.5 };
         // node.heightConstraint = { minimum: node.numberCitations * 1.5 };
         switch (node.court) {
