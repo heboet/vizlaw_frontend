@@ -145,6 +145,16 @@ class App extends Component {
           ) * 0.1;
         return edge;
       });
+      
+      graph.options = {
+        //physics:true,
+        edges: {
+          smooth: {
+            type: 'curvedCW',
+            roundness: '0.2'
+          }
+        }
+      };
 
       return graph;
     };
