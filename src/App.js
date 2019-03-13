@@ -84,7 +84,9 @@ class App extends Component {
         node.id = node.nodeId;
         node.label = node.name;
         node.shape = 'dot';
+
         node.value = node.numberCitations
+
         // node.widthConstraint = { minimum: node.numberCitations * 1.5 };
         // node.heightConstraint = { minimum: node.numberCitations * 1.5 };
         switch (node.court) {
@@ -135,6 +137,16 @@ class App extends Component {
           ) * 0.1;
         return edge;
       });
+      
+      graph.options = {
+        //physics:true,
+        edges: {
+          smooth: {
+            type: 'curvedCW',
+            roundness: '0.2'
+          }
+        }
+      };
 
       return graph;
     };
