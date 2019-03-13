@@ -60,19 +60,19 @@ class App extends Component {
 
   async search(searchTerm) {
     const url =
-      `https://de.openlegaldata.io/api/cases/search/?format=json&page_size=90&text=` +
+      `https://vizlaw-api.azurewebsites.net/api/search?searchQuery=` +
       searchTerm.replace(" ", "+");
     const result = await fetch(url, {
-      mode: "cors",
-      headers: {
-        Authorization: "Token " + "f268accea9dda3efb1837afe34b3a663ecb8af98",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "application/json"
-      }
+//      mode: "cors",
+//      headers: {
+//        Authorization: "Token " + "f268accea9dda3efb1837afe34b3a663ecb8af98",
+//        "Access-Control-Allow-Origin": "*",
+//        "Access-Control-Allow-Headers": "application/json"
+//      }
     });
     const json = await result.json();
     console.log("searchResults", json);
-    this.setState({ searchResults: json.results });
+    this.setState({ searchResults: json });
   }
 
   render() {
@@ -208,9 +208,9 @@ class App extends Component {
                   color="#f3464d"
                   onClick={async () => {
                     const fetchResult = await fetch(
-                      `https://de.openlegaldata.io/api/cases/${
+                      `https://vizlaw-api.azurewebsites.net/api/search?DecisionId=${
                         favorite.id
-                      }/?format=json`,
+                      }`,
                       {
                         mode: "cors",
                         headers: {
@@ -255,7 +255,7 @@ class App extends Component {
                       console.log("selectedNodeId", selectedNodeId);
 
                       const fetchResult = await fetch(
-                        `https://de.openlegaldata.io/api/cases/${selectedNodeId}/?format=json`,
+                        `https://vizlaw-api.azurewebsites.net/api/search?DecisionId=${selectedNodeId}`,
                         {
                           mode: "cors",
                           headers: {
@@ -312,6 +312,7 @@ class App extends Component {
             )}
           </Col>
         </Row>
+        <a href="https://vizlaw.de">Impressum</a>
       </div>
     );
   }
